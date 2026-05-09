@@ -1,0 +1,20 @@
+2026-05-09T09:15:21Z INFO  auth-service User login successful user_id=1001 username=john ip=192.168.1.10
+2026-05-09T09:15:24Z INFO  api-gateway Request completed method=GET path=/api/products status=200 duration_ms=45
+2026-05-09T09:15:27Z WARN  auth-service Failed login attempt username=admin ip=192.168.1.50
+2026-05-09T09:15:31Z INFO  payment-service Payment processed order_id=5001 amount=89.99 currency=AUD
+2026-05-09T09:15:36Z ERROR database Connection timeout host=db-prod-01 duration_ms=3000
+2026-05-09T09:15:40Z INFO  api-gateway Request completed method=POST path=/api/orders status=201 duration_ms=120
+2026-05-09T09:15:42Z WARN  inventory-service Low stock product_id=SKU-100 remaining=3
+2026-05-09T09:15:45Z INFO  auth-service User logout successful user_id=1001
+2026-05-09T09:15:50Z ERROR payment-service Payment failed order_id=5002 reason=card_declined
+2026-05-09T09:15:53Z INFO  api-gateway Request completed method=GET path=/api/orders/5001 status=200 duration_ms=67
+2026-05-09T09:16:01Z INFO  notification-service Email sent recipient=test@example.com template=welcome
+2026-05-09T09:16:05Z WARN  api-gateway Slow request method=GET path=/api/reports duration_ms=2500
+2026-05-09T09:16:08Z ERROR auth-service JWT validation failed token_id=abc123
+2026-05-09T09:16:11Z INFO  inventory-service Stock updated product_id=SKU-200 quantity=50
+2026-05-09T09:16:15Z INFO  api-gateway Request completed method=DELETE path=/api/cart/123 status=204 duration_ms=35
+2026-05-09T09:16:18Z ERROR database Query failed sql="SELECT * FROM users" error=deadlock_detected
+2026-05-09T09:16:25Z INFO  scheduler-service Daily cleanup job started
+2026-05-09T09:16:31Z INFO  scheduler-service Daily cleanup job completed duration_ms=5320
+2026-05-09T09:16:40Z WARN  payment-service Retry attempt order_id=5003 retry=1
+2026-05-09T09:16:45Z ERROR api-gateway Request failed method=PUT path=/api/profile status=500 duration_ms=890
