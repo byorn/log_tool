@@ -1,4 +1,4 @@
-use std::fmt;
+use std::str::FromStr;
 
 #[derive(Debug, PartialEq)]
 pub enum Command {
@@ -7,8 +7,10 @@ pub enum Command {
     TopUsers,
 }
 
-impl Command {
-    pub fn from_str(s: &str) -> Result<Self, String> {
+impl FromStr for Command {
+    type Err = String;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
         match s {
             "stats" => Ok(Self::Stats),
             "errors" => Ok(Self::Errors),

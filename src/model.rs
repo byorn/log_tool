@@ -1,3 +1,6 @@
+use std::fmt;
+use std::str::FromStr;
+
 #[derive(Debug, Hash, Eq, PartialEq, Clone)]
 pub enum LogLevel {
     Debug,
@@ -7,15 +10,30 @@ pub enum LogLevel {
     Critical,
 }
 
-impl LogLevel {
-    pub fn from_str(str: &str) -> Result<LogLevel, String> {
-        match str {
-            "INFO" => Ok(LogLevel::Info),
-            "WARN" => Ok(LogLevel::Warn),
-            "ERROR" => Ok(LogLevel::Error),
-            "DEBUG" => Ok(LogLevel::Debug),
-            _ => Err("Couldnt match a log level from the file".to_string()),
+impl FromStr for LogLevel {
+    type Err = String;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        match s {
+            "INFO" => Ok(Self::Info),
+            "WARN" => Ok(Self::Warn),
+            "ERROR" => Ok(Self::Error),
+            "DEBUG" => Ok(Self::Debug),
+            _ => Err("Couldn't match a log level from the file".to_string()),
         }
+    }
+}
+
+impl fmt::Display for LogLevel {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        let s = match self {
+            Self::Debug => "debug",
+            Self::Info => "info",
+            Self::Warn => "warn",
+            Self::Error => "error",
+            Self::Critical => "critical",
+        };
+        f.write_str(s)
     }
 }
 
@@ -24,4 +42,10 @@ pub struct LogEntry {
     pub level: LogLevel,
     pub user: String,
     pub message: String,
+}
+
+impl fmt::Display for LogEntry {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "[{}] {}: {}", self.level, self.user, self.message)
+    }
 }
