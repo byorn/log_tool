@@ -1,3 +1,7 @@
+##########
+Also read the todo file in the root Rust folder which you created to track all progress in Rust !!!!!!!!!!
+##########
+
 Log Analyzer CLI — Step-by-Step Guide
 🧭 Goal
 Build a CLI tool:
@@ -148,3 +152,40 @@ Day 5
 
 🚀 Next Step
 Start with Step 1 and move forward incrementally. Refactor only after you have a working version.
+
+# Log Statistics
+
+===================
+
+Total Entries : 7
+
+INFO : 3
+WARN : 1
+ERROR : 3
+
+Unique Users : 3
+
+Top User : alice (3 entries)
+
+First Timestamp : 2026-05-20T10:00:01
+Last Timestamp : 2026-05-20T10:06:30
+
+# ERROR Entries
+
+=====================
+
+2026-05-20T10:01:15 ERROR bob PaymentFailed
+
+2026-05-20T10:04:20 ERROR alice DatabaseTimeout
+
+2026-05-20T10:06:30 ERROR bob InvalidCoupon
+
+Total ERROR entries: 3
+
+# Top Users
+
+================
+
+1. alice 3 entries
+2. bob 3 entries
+3. charlie 1 entry
